@@ -1,0 +1,62 @@
+<html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js"></script>
+    </head>
+    <body>
+        <div class="grid-container">
+            <div class="grid-item1">
+                <div class="grid-itema">
+                    
+                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="grid-itemb">
+                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="grid-itemc">
+                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="grid-itemd">
+                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    
+                </div>
+            </div>
+            <div class="grid-item2">
+               
+                <div id="myDIV" class="header">
+                    <h2>Task List</h2>
+
+                    <ul id="myUL" draggable="true"ondragstart="drag(event)">
+                 
+                      
+                      </ul>
+                      <br>
+                      
+                    <input type="text" id="myInput" placeholder="Add Task...">
+                
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <center>
+                     <button type="button" class="btn btn-secondary btn-circle btn-sm"
+                     onclick="newElement()" class="addBtn">+</button>
+                    </center>
+                </div>
+                
+                  
+            </div>
+          </div>
+    </body>
+</html>
