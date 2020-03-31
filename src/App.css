@@ -1,0 +1,236 @@
+html,body
+{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  
+}
+::-webkit-scrollbar
+{
+  width: 16px;
+}
+::-webkit-scrollbar-track
+{
+  /*border:7px solid #232943;*/
+  border:7px solid #333945;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb
+{
+  background: linear-gradient(
+45deg, #E74292, #BB2CD9);
+  border-radius: 10px;
+    
+}
+.App-first
+{
+  /*background-color: #FFF222;*/
+  background-image: linear-gradient(to left,#FFF222,#F3B63A,#FFF222);
+  background-size: 200%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 35%;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #333945;
+  outline: none;
+  transition: 0.6s;
+}
+.App-first:hover
+{
+  background-position: right;
+}
+.App-second
+{
+  /*background-color: #45CE30;*/
+  background-image: linear-gradient(to left,#badc57,#6ab04c,#badc57);
+  background-size: 200%;
+  position: fixed;
+  top: 0;
+  left: 35%;
+  height: 50%;
+  width: 35%;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #333945;
+  outline: none;
+  transition: 0.6s;
+}
+.App-second:hover
+{
+  background-position: right;
+}
+.App-third
+{
+  background-image: linear-gradient(to left,#ff944d,#e65c00,#ff944d);
+  background-size: 200%;
+  /*background-color: #ff8300;*/
+  position: fixed;
+  top: 50%;
+  left: 0;
+  height: 50%;
+  width: 35%;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #333945;
+  outline: none;
+  transition: 0.6s;
+}
+.App-third:hover
+{
+  background-position: right;
+}
+.App-fourth
+{
+  background-image: linear-gradient(to left,#ff704d,#b32400,#ff704d);
+  background-size: 200%;
+  background-color: #B83227;
+  position: fixed;
+  top: 50%;
+  left: 35%;
+  height: 50%;
+  width: 35%;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #333945;
+  outline: none;
+  transition: 0.6s;
+}
+.App-fourth:hover
+{
+  background-position: right;
+}
+.Task-bar
+{
+  background-color: #333945;
+  top: 0;
+  left: 70%;
+  position: fixed;
+  height: 100%;
+  width: 30%;
+  overflow-y: auto;
+}
+.Text-inbox
+{
+  text-align: center;
+  font-style: American Typewriter, serif;
+  font-weight: bold;
+  font-size: 25px;
+}
+.Task-header
+{
+  text-align: center;
+  font-style: American Typewriter, serif;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 40px;
+  color: #fff;
+  
+}
+.Add-icon
+{
+  color: #00ffff;
+  font-size: 50px;
+  position: relative;
+  bottom: -10%;
+  left: 50%;
+  float: left;
+  cursor: pointer;
+
+}
+.Add-icon :hover
+{
+  color:  #98b3b3;
+}
+.To-do
+{
+  position: relative;
+  
+}
+.To-do input
+{
+  outline: none;
+  margin:15%;
+  margin-right: 0;
+  width: 75%;
+  height: 75px;
+  text-align: center;
+  /*background-color: #2475B0;*/
+  background-image: linear-gradient(to left,#74B9FF,#2475B0,#74B9FF);
+  background-size: 200%;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 0;
+  transition: 0.6s;
+  position: relative;
+  overflow-wrap: break-word;
+}
+.To-do input:hover
+{
+  background-position: right;
+}
+.To-do input::placeholder
+{
+  color: #fff;
+}
+.Trash-icon
+{
+  color: #000;
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  position: absolute;
+  left: 80%;
+  bottom: 20%;
+  z-index: 1;
+}
+.Trash-icon:hover
+{
+  color: #FF3031;
+}
+.Pencil-icon
+{
+  color:  #000;
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  position: absolute;
+  left: 70%;
+  bottom: 20%;
+  z-index: 1;
+}
+.Pencil-icon:hover
+{
+  color:#00ff00; 
+}
+.Done
+{
+  color: #00ff00;
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  position: absolute;
+  left: 70%;
+  bottom: 20%;
+  z-index: 1;
+}
+.Done:hover
+{
+  color: #fff;
+}
