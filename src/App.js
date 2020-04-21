@@ -3,9 +3,13 @@ import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlusCircle,faTrash,faPencilAlt,faCheck} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from  '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
+import'react-toastify/dist/ReactToastify.css';
 import FlipMove from 'react-flip-move';
 
 library.add(faPlusCircle,faTrash,faPencilAlt,faCheck)
+
+toast.configure()
 
 
 class App extends React.Component{
@@ -13,6 +17,9 @@ class App extends React.Component{
     super(props);
     this.state={
     list:[],
+    immediate:[],
+    draggeditem:null,
+    count:0,
     dis:true,
     write:true,
     disablehandle:[true],
@@ -34,6 +41,7 @@ class App extends React.Component{
       this.setState({list : this.state.list})
 
       console.log(this.state.list);
+      console.log(this.state.immediate);
     }
 
     
@@ -67,10 +75,27 @@ class App extends React.Component{
     }
 
 
+    allowdrop(e){
+      e.preventDefault();
+  
+    }
+
+    dragstart(e,index){
+      e.dataTransfer.setData("text/html",e.target.id);
+    }
+
+    drop(e){
+      e.preventDefault();
+      var data=e.dataTransfer.getData("text/html");
+      e.target.appendChild(document.getElementById(data));
+      
+    }
+
+
   render(){
     return (
       <div>
-          <div className='App-first' >
+          <div className='App-first' onDrop={(e)=>this.drop(e)} onDragOver={(e)=>this.allowdrop(e)}>
               <p className='Text-inbox'>Immediate</p>
           </div>
           <div className='App-second'>
@@ -82,24 +107,24 @@ class App extends React.Component{
           <div className='App-fourth'>
               <p className='Text-inbox'>Timewaste</p>
           </div>
-          <div className="Task-bar">
+          <div className="Task-bar" onDrop={(e)=>this.drop(e)} onDragOver={(e)=>this.allowdrop(e)}>
               <p className='Task-header'> Task-list</p>
               {
                   this.state.list.map((listvalue,index)=>{
                     
                     return(
                         <div key={index}>
-                          <div className="To-do">
-                              <FontAwesomeIcon className='Trash-icon' icon="trash" onClick={(e)=>this.delete(e,index)}/>
+                          <div className="To-do" >
+                              <FontAwesomeIcon className='Trash-icon' icon="trash" onClick={(e)=>this.delete(e,index,listvalue)}  />
                               <div onClick={()=>this.changeIcon(index) }>
                                 {
                                   this.state.writehandle[index]?
                                   <FontAwesomeIcon className='Pencil-icon' icon="pencil-alt" />
-                                  :<FontAwesomeIcon className='Done' icon="check" />
+                                  :<FontAwesomeIcon className='Done' icon="check"/>
                                 }
               
                               </div>
-                              <input type="text" value={listvalue} disabled={this.state.disablehandle[index]} onChange={(e)=>this.handleChange(e,index)}/> 
+                              <input type="text" id={index} value={listvalue} disabled={this.state.disablehandle[index]} onChange={(e)=>this.handleChange(e,index)}  draggable="true" onDragStart={(e)=>this.dragstart(e,index)}/> 
                            </div>
                       </div>
                     )
@@ -111,6 +136,8 @@ class App extends React.Component{
               <FontAwesomeIcon className='Add-icon' icon="plus-circle" onClick={(e)=>this.addList(e)}/>
           </div>
       </div>
+
+
     );
 
   }
