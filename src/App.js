@@ -17,31 +17,41 @@ class App extends React.Component{
     super(props);
     this.state={
     list:[],
-    immediate:[],
     draggeditem:null,
-    count:0,
+    immediatecount:0,
+    tasklistcount:0,
     dis:true,
     write:true,
+    /*disablehandle:[false],*/
     disablehandle:[true],
-    writehandle:[true],
+    /*writehandle:[true],*/
     }
   }
     addList() {
       this.setState({
         list:[...this.state.list," "],
         disablehandle:[...this.state.disablehandle,true],
-        writehandle:[...this.state.writehandle,true]
+       /* writehandle:[...this.state.writehandle,true]*/
       })
+
+      console.log(this.state.disablehandle);
+
     }
 
     handleChange(e,index){
-      this.state.list[index]=e.target.value
-/*
-      /*this.setState({ dis: false})*/
-      this.setState({list : this.state.list})
 
-      console.log(this.state.list);
-      console.log(this.state.immediate);
+        const newlist=this.state.list.slice();
+        newlist[index]=e.target.value;
+        this.setState({list:newlist});
+
+        /*this.state.list[index]=e.target.value*/
+
+        /*this.setState({ dis: false})*/
+        /*this.setState({list : this.state.list})*/
+
+        console.log(this.state.list);
+      
+
     }
 
     
@@ -55,8 +65,8 @@ class App extends React.Component{
       this.state.disablehandle.splice(index,1)
       this.setState({disablehandle:this.state.disablehandle})
 
-      this.state.writehandle.splice(index,1)
-      this.setState({writehandle:this.state.writehandle})
+      /*this.state.writehandle.splice(index,1)
+      this.setState({writehandle:this.state.writehandle})*/
 
 
       console.log(this.state.disablehandle);
@@ -64,20 +74,43 @@ class App extends React.Component{
       console.log(this.index);
     }
 
-    changeIcon(index){
+    /*changeIcon(index){
       this.setState({
         write:!this.state.write,
         dis:!this.state.dis,
-      })
+      })./
+      
       this.state.writehandle[index]=!this.state.writehandle[index]
 
       this.state.disablehandle[index]=!this.state.disablehandle[index]
+      
+    }*/
+    enabledit(e,index){
+
+      const newlist=this.state.disablehandle.slice();
+        newlist[index]=false;
+        this.setState({disablehandle:newlist});
+
+      /*this.state.disablehandle[index]=false;*/
+      console.log("working");
+
     }
 
+    enterpressed(e,index){
+
+      if(e.key === 'Enter'){
+        
+        const newlist=this.state.disablehandle.slice();
+        newlist[index]=true;
+        this.setState({disablehandle:newlist});
+
+          /*this.state.disablehandle[index]=true;*/
+
+      }
+    }
 
     allowdrop(e){
       e.preventDefault();
-  
     }
 
     dragstart(e,index){
@@ -85,10 +118,35 @@ class App extends React.Component{
     }
 
     drop(e){
-      e.preventDefault();
-      var data=e.dataTransfer.getData("text/html");
-      e.target.appendChild(document.getElementById(data));
-      
+        e.preventDefault(); 
+        if(this.state.immediatecount>=4 && e.target.className!=="Task-bar"){
+          toast("ONLY 4 TASKS ARE ALLOWED FOR AN ACTIVITY ....");
+
+        }
+        else if(e.target.className==="App-first"){
+            var data=e.dataTransfer.getData("text/html");
+          e.target.appendChild(document.getElementById(data));
+
+          this.setState({
+              immediatecount:this.state.immediatecount + 1
+
+            })
+         }
+
+        else if(e.target.className==="Task-bar" && e.target.className!=="Add-icon"){
+            var data1=e.dataTransfer.getData("text/html");
+            e.target.appendChild(document.getElementById(data1));
+          }
+
+
+         else{
+
+            toast("PLACE THE LIST CORRECTLY....",{
+            position:toast.POSITION.TOP_CENTER
+        
+            });
+          }
+        console.log(this.state.immediatecount);
     }
 
 
@@ -97,6 +155,8 @@ class App extends React.Component{
       <div>
           <div className='App-first' onDrop={(e)=>this.drop(e)} onDragOver={(e)=>this.allowdrop(e)}>
               <p className='Text-inbox'>Immediate</p>
+              <FontAwesomeIcon className='Trash-icon' id="trashiconid" icon="trash" onClick={(e)=>this.delete(e)}/>
+
           </div>
           <div className='App-second'>
               <p className='Text-inbox'>Efficient</p>
@@ -114,19 +174,14 @@ class App extends React.Component{
                     
                     return(
                         <div key={index}>
-                          <div className="To-do" >
-                              <FontAwesomeIcon className='Trash-icon' icon="trash" onClick={(e)=>this.delete(e,index,listvalue)}  />
-                              <div onClick={()=>this.changeIcon(index) }>
-                                {
-                                  this.state.writehandle[index]?
-                                  <FontAwesomeIcon className='Pencil-icon' icon="pencil-alt" />
-                                  :<FontAwesomeIcon className='Done' icon="check"/>
-                                }
-              
+                          <div className="To-do"  onDoubleClick={(e)=>this.enabledit(e,index)} >
+                              <div>
+                                  <input type="text" id={index} value={listvalue} draggable="true" disabled={this.state.disablehandle[index]} onChange={(e)=>this.handleChange(e,index)} onDragStart={(e)=>this.dragstart(e,index)}  onKeyDown={(e)=>this.enterpressed(e,index)}/> 
+                                  <FontAwesomeIcon className='Trash-icon' id="trashiconid" icon="trash" onClick={(e)=>this.delete(e)}/>
                               </div>
-                              <input type="text" id={index} value={listvalue} disabled={this.state.disablehandle[index]} onChange={(e)=>this.handleChange(e,index)}  draggable="true" onDragStart={(e)=>this.dragstart(e,index)}/> 
-                           </div>
-                      </div>
+                              
+                           </div> 
+                        </div>
                     )
                           
                   })

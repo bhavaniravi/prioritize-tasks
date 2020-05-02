@@ -41,6 +41,7 @@ html,body
   transition: 0.6s;
   display: flex;
   flex-flow: column;
+  overflow-y: auto;
 }
 .App-first:hover
 {
@@ -155,7 +156,7 @@ html,body
   position: relative;
   
 }
-.To-do input
+/*.To-do input
 {
   outline: none;
   margin:15%;
@@ -163,7 +164,6 @@ html,body
   width: 75%;
   height: 75px;
   text-align: center;
-  /*background-color: #2475B0;*/
   background-image: linear-gradient(to left,#74B9FF,#2475B0,#74B9FF);
   background-size: 200%;
   border: none;
@@ -183,7 +183,39 @@ html,body
 .To-do input::placeholder
 {
   color: #fff;
+}*/
+input
+{
+  outline: none;
+  margin:5%;
+  padding: 0;
+  margin-left: 10%;
+  margin-right: 0;
+  width: 75%;
+  height: 100px;
+  text-align: center;
+  background-image: linear-gradient(to left,#74B9FF,#2475B0,#74B9FF);
+  background-size: 200%;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 17px;
+  /*margin-bottom: 0;*/
+  transition: 0.6s;
+  position: relative;
+  overflow-wrap: break-word;
+
 }
+input:hover
+{
+  background-position: right;
+}
+input::placeholder
+{
+  color: #fff;
+}
+
 .Trash-icon
 {
   color: #000;
@@ -194,8 +226,8 @@ html,body
   border: none;
   outline: none;
   position: absolute;
-  left: 80%;
-  bottom: 20%;
+  left: 70%;
+  bottom: 35%;
   z-index: 1;
 }
 .Trash-icon:hover
