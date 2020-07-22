@@ -1,0 +1,142 @@
+body{
+  background-color: #2F363F;
+  height: 100%;
+}
+::-webkit-scrollbar{
+  width: 1%;
+}
+::-webkit-scrollbar-track{
+  border: 3px solid #58626e;
+}
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(
+    95deg, #BB2CD9,#E74292
+  );
+  border-radius: 20px;
+}
+.immediate{
+  margin: 20px;
+  background-color: #FFF222;
+  height: 45vh;
+  width: 35vw;
+}
+.efficient{
+  margin: 20px ;
+  background-color: #45CE30;
+  height: 45vh;
+  width: 35vw;
+}
+.interruption{
+  margin: 20px;
+  background-color: #ff5622;
+  height: 45vh;
+  width: 35vw;
+}
+.timewaste{
+  margin: 20px;
+  background-color: #FF3031;
+  height: 45vh;
+  width: 35vw;
+}
+.card-title{
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2vw;
+  cursor: default;
+}
+.scrollable{
+  max-height: 100%;
+  overflow: auto;
+}
+.task-list{
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  font-size: 4vw;
+  text-align: center;
+  margin: 20px;
+  cursor: default;
+}
+.add-icon{
+  font-size: 4vw;
+  color: #E74292;
+  position: sticky;
+  bottom: 40px;
+  left:82vw;
+  cursor: pointer;
+  transition: color 1s;
+}
+.add-icon:hover{
+  border-radius: 50%;
+  color: #BB2CD9;
+}
+.my-list{
+  height: 7vh;
+  width: 25vw;
+  margin: 1vw auto;
+  background-color: #487EB0;
+  display: block;
+  font-size: 160%;
+  color: #fff;
+  cursor: default;
+  text-decoration: none;
+  outline: none;
+}
+.my-list:not(:focus){
+  background-color: #487EB0;
+  color: #fff;
+}
+.my-list:focus{
+  background-color: #487EB0;
+  color: #fff;
+}
+@media (min-height: 550px) { 
+  .trash-icon{
+    color: #000;
+    font-size: 2.8vh;
+    z-index: 2;
+    position: relative;
+    margin-top: -14vh;
+    left: 80%;
+    
+  }
+}
+@media (min-height: 400px) and (max-height: 549.9px) { 
+  .trash-icon{
+    color: #000;
+    font-size: 2.8vh;
+    z-index: 2;
+    position: relative;
+    margin-top: -17vh;
+    left: 80%;
+  }
+}
+@media (min-height: 350px) and (max-height: 400px) { 
+  .trash-icon{
+    color: #000;
+    font-size: 2.8vh;
+    z-index: 2;
+    position: relative;
+    margin-top: -20vh;
+    left: 80%;
+  }
+}
+@media (max-height: 349px) { 
+  .trash-icon{
+    color: #000;
+    font-size: 2.8vh;
+    z-index: 2;
+    position: relative;
+    margin-top: -23vh;
+    left: 80%;
+  }
+}
+.trash-icon:hover{
+  color: #FF3031;
+}
+.no-drop{
+  justify-content: center;
+
+}
